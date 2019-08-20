@@ -123,6 +123,7 @@ Options:
   -Z, --no-analyze          don't analyze at end
   -k, --no-superuser-check  skip superuser checks in client
   -C, --exclude-extension   don't repack tables which belong to specific extension
+  -A, --apply-count         number of applied logs per transaction
 
 Connection options:
   -d, --dbname=DBNAME       database to connect
@@ -222,6 +223,11 @@ Reorg Options
 ``-C``, ``--exclude-extension``
     Skip tables that belong to the specified extension(s). Some extensions
     may heavily depend on such tables at planning time etc.
+
+``-A``, ``--apply-count``
+    Number of applied logs per transaction during the final catchup phase.
+    Larger values could speed-up pg_repack, but will lead to longer transactions
+    for each delta.
 
 Connection Options
 ^^^^^^^^^^^^^^^^^^
